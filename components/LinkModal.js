@@ -23,7 +23,7 @@ const LinkModal = ({user, setLinkModalStatus, linkModalStatus}) => {
 
     const getEnv = () => {
         if (process.env.NODE_ENV == 'production') {
-            setEnv(process.env.NEXT_PUBLIC_AUTH_DOMAIN)
+            setEnv(process.env.NEXT_PUBLIC_VERCEL_DOMAIN)
         } else {
             setEnv('http://'+process.env.NEXT_PUBLIC_DEVELOPMENT_DOMAIN)
         }
