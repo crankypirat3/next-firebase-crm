@@ -2,6 +2,7 @@ import { IoMdClose } from "react-icons/io";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useState } from "react";
+import { consoleUrl } from "firebase-tools/lib/utils";
 
 const TicketDetails = ({ticketDetails, setTicketDetails, tickets, setTickets}) => {
 
@@ -9,6 +10,10 @@ const TicketDetails = ({ticketDetails, setTicketDetails, tickets, setTickets}) =
 
     const warnDelete = () => {
         setwarnModal(!warnModal);
+    }
+
+    const sendEmail = () => {
+        console.log('email sent')
     }
 
     const  handleDelete = async (e) => {
