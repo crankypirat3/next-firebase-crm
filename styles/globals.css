@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@layer components {
+  .pagination-numbers{
+    @apply px-4 py-2 rounded-lg border mx-[1px]
+  }
 }

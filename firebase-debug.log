@@ -1,0 +1,21 @@
+[debug] [2022-10-17T03:08:00.759Z] ----------------------------------------------------------------------
+[debug] [2022-10-17T03:08:00.761Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jswee\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2022-10-17T03:08:00.761Z] CLI Version:   10.9.2
+[debug] [2022-10-17T03:08:00.761Z] Platform:      win32
+[debug] [2022-10-17T03:08:00.762Z] Node Version:  v16.15.0
+[debug] [2022-10-17T03:08:00.763Z] Time:          Sun Oct 16 2022 20:08:00 GMT-0700 (Pacific Daylight Time)
+[debug] [2022-10-17T03:08:00.763Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-17T03:08:00.771Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-17T03:08:00.772Z] > authorizing via signed-in user (web3jack@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\jswee\Documents\next-crm
+
