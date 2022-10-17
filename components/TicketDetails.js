@@ -2,7 +2,6 @@ import { IoMdClose } from "react-icons/io";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useState } from "react";
-import { consoleUrl } from "firebase-tools/lib/utils";
 
 const TicketDetails = ({ticketDetails, setTicketDetails, tickets, setTickets}) => {
 
@@ -12,9 +11,6 @@ const TicketDetails = ({ticketDetails, setTicketDetails, tickets, setTickets}) =
         setwarnModal(!warnModal);
     }
 
-    const sendEmail = () => {
-        console.log('email sent')
-    }
 
     const  handleDelete = async (e) => {
         e.preventDefault();
@@ -62,7 +58,7 @@ const TicketDetails = ({ticketDetails, setTicketDetails, tickets, setTickets}) =
                         <textarea className="w-full min-h-[200px] my-2 p-3 border border-blue-400 rounded-lg resize-none focus:outline-none" type="text" />
 
                         <div className="relative items-baseline">
-                            <button onClick={sendEmail} className="block mx-auto border bg-blue-400 px-5 py-3 md:px-8 md:py-4 text-xl rounded-xl">Send</button>
+                            <button className="block mx-auto border bg-blue-400 px-5 py-3 md:px-8 md:py-4 text-xl rounded-xl">Send</button>
                             <button onClick={warnDelete} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-red-500 text-white px-3 py-1 md:px-5 md:py-3 rounded-xl">Delete</button>
                         </div>
 
