@@ -9,7 +9,7 @@ import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import LoginForm from '../components/LoginForm'
 import Navbar from '../components/Navbar'
-import Card from '../components/card'
+import Card from '../components/Card'
 
 import {auth} from '../firebase'
 
@@ -61,17 +61,6 @@ export default function Home() {
 
       {/* Product */}
       <h2 className='text-3xl text-center font-bold tracking-wider underline underline-offset-8 underline-offset-x decoration-purple-400 text-red p-5'>What We Do</h2>
-      {/* <div className=' bg-sky-200'>
-        <div className="flex flex-col items-center">
-          <Image />
-          <p className='w-1/2'>img</p>
-          <div className='w-1/2'>
-            <h3 className='text-2xl font-bold text-center'>Step 1:</h3>
-            <p className='p-3 my-2 text-lg'>After Creating your account, you generate a link. Then, you copy and paste it in wherever you want to receive feedback</p>
-          </div>
-        </div>
-
-      </div> */}
 
       
       {/* Testimonials */}
