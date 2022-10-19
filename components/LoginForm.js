@@ -18,7 +18,6 @@ export default function LoginForm() {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        console.log(email, password)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) =>{
                 const user = userCredential.user;  
@@ -29,7 +28,6 @@ export default function LoginForm() {
             }).then(()=>{
                 Router.push('/')
             }).catch(error => {
-                console.log("email or password are incorrect")
                 setIncorrectLogin(true)
             })
     }

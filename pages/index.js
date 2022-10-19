@@ -17,8 +17,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { login, logout } from '../slices/userSlice'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
-// import { getAuth } from 'firebase/auth'
 
 
 
@@ -28,8 +28,16 @@ export default function Home() {
   const dispatch = useDispatch();
   const router = useRouter()
 
-  const redirect = () => {
-    router.push("/sign-up")
+  const heroRef = useRef()
+  const productRef = useRef()
+  const testimonialsRef = useRef()
+
+  const scroll = () => {
+    testRef.current.scrollIntoView({behavior:'smooth'})
+  }
+
+  const redirect = (e) => {
+    router.push(e.target.value)
   }
 
   useEffect(()=>{
@@ -48,27 +56,33 @@ export default function Home() {
   },[dispatch])
   return(
     <div className='min-h-screen relative'>
-      <Navbar user={currentUser}  />
-      <div className=' bg-blue-200 mx-auto rounded-2xl pt-[79px]'>
+      <Navbar user={currentUser} scroll={scroll}  />
+      <div id='hero' className='scroll-smooth bg-blue-200 mx-auto rounded-2xl pt-[79px]'>
         <div className='flex flex-col items-center justify-center md:flex-row bg-blue-500'>
           <div className="">
             <Image src='/Typing-amico.png' width={800} height={800} alt='hero image'/>
 
           </div>
-          <h2 className='bg-orange-400 mx-4 w-full text-white rounded-2xl font-bold tracking-wider md:w-auto p-6 text-center z-10 mb-4'>Connect to your Customers Anywhere</h2>
+          <h2 ref={heroRef} className='bg-orange-400 mx-4 w-full text-white rounded-2xl font-bold tracking-wider md:w-auto p-6 text-center z-10 mb-4'>Connect to your Customers Anywhere</h2>
         </div>
       </div>
 
       {/* Product */}
-      <h2 className='text-3xl text-center font-bold tracking-wider underline underline-offset-8 underline-offset-x decoration-purple-400 text-red p-5'>What We Do</h2>
+      <h2 className='scroll-smooth text-3xl text-center font-bold tracking-wider underline underline-offset-8 underline-offset-x decoration-purple-400 text-red p-5'>What We Do</h2>
+      <div id='product'  className=" mx-2 max-w-4xl md:mx-auto bg-blue-100 p-4 rounded-2xl">
+        <h3 className=' text-xl leading-loose text-center font-semibold tracking-wide underline underline-offset-8 decoration-orange-500'>
+          We Specialize in Connecting you and your Customers
+        </h3>
+        <p className='my-4 p-3 leading-loose text-lg'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde natus, possimus recusandae deleniti reiciendis explicabo qui, consequuntur mollitia libero exercitationem, beatae officia. Mollitia provident repellendus suscipit tenetur, asperiores quaerat officia velit incidunt dolore necessitatibus!</p>
+        <p className='my-4 p-3 leading-loose text-lg'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde natus, possimus recusandae deleniti reiciendis explicabo qui, consequuntur mollitia libero exercitationem, beatae officia. Mollitia provident repellendus suscipit tenetur, asperiores quaerat officia velit incidunt dolore necessitatibus!</p>
 
+      </div>
       
       {/* Testimonials */}
-      <h2 className='text-3xl text-center font-bold tracking-wider underline underline-offset-8 underline-offset-x decoration-purple-400 text-red p-5'>Testimonials</h2>
-      <div className='xs:mx-auto max-w-sm mx-auto md:max-w-none md:mx-auto md:flex md:justify-center  md:space-x-4'>
+      <h2 ref={testimonialsRef}  className='scroll-smooth text-3xl text-center font-bold tracking-wider underline underline-offset-8 underline-offset-x decoration-purple-400 text-red p-5'>Testimonials</h2>
+      <div id='testimonials' className='xs:mx-auto max-w-sm mx-auto md:max-w-none md:mx-auto md:flex md:justify-center  md:space-x-4'>
         <Card />
         <Card />
-
         <Card />
       </div>
 
@@ -84,9 +98,17 @@ export default function Home() {
         
         </ul>
         <div className='text-center mt-5 mb-0'>
-          <button onClick={redirect} className='px-8 py-5 bg-orange-500 rounded-2xl mb-4 mx-auto text-white'>
-            Get Started
-          </button>
+          {
+            currentUser.user ?
+            <button onClick={redirect} value={`/${currentUser.user.uid}/dashboard`} className='px-8 py-5 bg-orange-500 rounded-2xl mb-4 mx-auto text-white'>
+              Dashboard
+            </button> 
+            :
+            <button onClick={redirect} value={'/sign-up'} className='px-8 py-5 bg-orange-500 rounded-2xl mb-4 mx-auto text-white'>
+              Get Started
+            </button>
+          }
+          
 
         </div>
       </div>

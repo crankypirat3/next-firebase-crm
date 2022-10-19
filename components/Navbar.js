@@ -2,16 +2,17 @@ import Link from "next/link"
 import Image from "next/image"
 
 import { useEffect, useRef, useState } from "react";
-import {GiHamburgerMenu} from "react-icons/gi";
+import {GiConsoleController, GiHamburgerMenu} from "react-icons/gi";
 
 import { useSelector } from "react-redux";
 import userSlice from "../slices/userSlice";
 
 
 
-export default function Navbar({user, scrollMenu}) {
+export default function Navbar({user, scrollMenu, scroll}) {
     const [menu, setMenu] = useState(false)
     
+    const hrefTargets = ['hero', 'product', 'testimonials']
 
     
     const ref = useRef()
@@ -41,12 +42,28 @@ export default function Navbar({user, scrollMenu}) {
     }
     },[menu]) 
 
-    
+    const testScroll = (e) => {
+        let test = document.getElementById(e.target.value);
+        e.preventDefault()
+        if(menu && e.target.value == 'testimonials'){
+            // test.scrollIntoView({behavior:'smooth', block:'start'})
+            window.scroll({
+                top: 1300,
+                behavior: 'smooth'
+            })
+            // console.log('tested')
+        } else {
+            test.scrollIntoView({behavior:'smooth', block: 'center', });
+
+        }
+    }
 
     const menuSlide = (e) => {
         setMenu(!menu)
        
         }    
+
+
     
         // console.log(user.user.email)
     return(
@@ -57,15 +74,15 @@ export default function Navbar({user, scrollMenu}) {
  
                 </div>
                 <div className={`hidden md:flex`}>
-                    <Link href="#">
-                        <a className="  px-3 py-7  hover:bg-blue-400 hover:text-white">Home</a>
-                    </Link>
-                    <Link  href="#">
-                        <a className=" px-3 py-7  hover:bg-blue-400 hover:text-white">Product</a>
-                    </Link>
-                    <Link href="#">
-                        <a className=" px-3 py-7  hover:bg-blue-400 hover:text-white">Pricing</a>
-                    </Link>
+                    <button onClick={testScroll} value={hrefTargets[0]} className=" px-3 py-7  hover:bg-blue-400 hover:text-white">
+                        Home
+                    </button>
+                    <button onClick={testScroll} value={hrefTargets[1]} className=" px-3 py-7  hover:bg-blue-400 hover:text-white">
+                        Product
+                    </button>
+                    <button onClick={testScroll} value={hrefTargets[2]} className=" px-3 py-7  hover:bg-blue-400 hover:text-white">
+                        Testimonials
+                    </button>
                     
                     
                 </div>
@@ -105,15 +122,21 @@ export default function Navbar({user, scrollMenu}) {
 
             
                 <div id="mobileMenu" ref={ref} className={`${menu ? "right-0" : "right-[-500px]" } z-50 fixed flex flex-col w-72 top-[79px] h-screen transition-all duration-500 ease-in-out bg-blue-100 md:hidden`}>
-                    <Link href="#">
-                        <a className="py-3 px-5 mx-auto w-full text-center my-10 hover:bg-blue-400 hover:text-white">Home</a>
-                    </Link>
-                    <Link  href="#">
+                    <button onClick={testScroll} value={hrefTargets[0]} className="py-3 px-5 mx-auto w-full text-center my-10 hover:bg-blue-400 hover:text-white" oncl>
+                        Home
+                    </button>
+                    <button onClick={testScroll} value={hrefTargets[1]} className="py-3 px-5 mx-auto w-full text-center my-10 hover:bg-blue-400 hover:text-white" oncl>
+                        Product
+                    </button>
+                    <button onClick={testScroll} value={hrefTargets[2]} className="py-3 px-5 mx-auto w-full text-center my-10 hover:bg-blue-400 hover:text-white" oncl>
+                        Testimonials
+                    </button>
+                    {/* <Link  href="#">
                         <a className="py-3 px-5 mx-auto w-full text-center my-10 hover:bg-blue-400 hover:text-white">Product</a>
                     </Link>
                     <Link href="#">
                         <a className="py-3 px-5 mx-auto w-full text-center my-10 hover:bg-blue-400 hover:text-white">Pricing</a>
-                    </Link>
+                    </Link> */}
                     {
                         user.user == null ?
                         <div className="flex justify-around mt-36">

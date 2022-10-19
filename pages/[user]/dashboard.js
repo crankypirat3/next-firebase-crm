@@ -11,6 +11,7 @@ import { login, logout } from "../../slices/userSlice";
 import {useRouter} from "next/router";
 import useFirebaseAuth from "../../hooks/useFirebaseAuth";
 import Footer from "../../components/Footer";
+import { connectFirestoreEmulator } from "firebase/firestore";
 
 
 export default function Dashboard() {
@@ -28,11 +29,6 @@ export default function Dashboard() {
         
     }
 
-    // console.log(currentUser);
-   
-    // get current Ticekts
-    
-    
         {
             if(currentUser.user) {
                 return(

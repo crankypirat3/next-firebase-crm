@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import { GiConsoleController } from "react-icons/gi"
 import { IoMdClose } from "react-icons/io"
 
 
@@ -21,6 +22,8 @@ const LinkModal = ({user, setLinkModalStatus, linkModalStatus}) => {
         alert("copied")
     }
 
+    
+
     const getEnv = () => {
         if (process.env.NODE_ENV == 'production') {
             setEnv(process.env.NEXT_PUBLIC_VERCEL_DOMAIN)
@@ -31,6 +34,8 @@ const LinkModal = ({user, setLinkModalStatus, linkModalStatus}) => {
 
     const link123 = `${env}/${user.user.uid}/feedback`
     // console.log(link123)
+
+    console.log(process.env.NODE_ENV)
     return(
         <div className="fixed z-40  w-full h-full overflow-auto bg-black/[.4]">
             <div className="bg-gray-50 mx-5 md:mx-auto h-96 mt-48 max-w-2xl p-3 rounded-2xl">

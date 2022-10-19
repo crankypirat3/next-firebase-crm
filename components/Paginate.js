@@ -9,15 +9,6 @@ const Paginate = ({ticketsPerPage, tickets, currentPage, changePage, startIndex,
     
     const pageNumbers = [];
 
-    const handleChange = (e) => {
-        // if (e.target.value==1) {
-        //     console.log('decrease')
-        // } else {
-        //     console.log("increase")
-        // }
-        console.log(e.target.value)
-    }
-    
     for (let i = 1; i <= Math.ceil(tickets.length / ticketsPerPage); i++ ) {
         pageNumbers.push(i);
         // console.log(pageNumbers)
@@ -33,7 +24,7 @@ const Paginate = ({ticketsPerPage, tickets, currentPage, changePage, startIndex,
         if(currentPage > 2) {
             setStartIndex(currentPage - 3);
             setEndIndex(currentPage )
-            // console.log('test')
+
           }
         
     }
@@ -71,20 +62,12 @@ const Paginate = ({ticketsPerPage, tickets, currentPage, changePage, startIndex,
                     ))
                 }
                 {
-                    currentPage != pageNumbers.length &&
+                    (currentPage != pageNumbers.length && tickets.length > ticketsPerPage) &&
                         <button onClick={handleIncrement} className="ml-4 border border-black rounded-md p-1">
                             <HiOutlineArrowRight className="h-7 w-7 cursor-pointer   "/>
                         </button>  
 
                 }    
-             
-            {/* <div className="flex flex-col ml-32">
-            <p className="">startIndex: {startIndex}   </p>  
-           
-            <p>endIndex: {endIndex}</p>    
-            <p>current Page: {currentPage}</p>
-            </div> */}
-            
         </nav>
     )
 }
